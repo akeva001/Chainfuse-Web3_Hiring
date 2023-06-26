@@ -17,11 +17,12 @@ export const getTimeUntilGangWar = async () => {
     const diffTime = (tDate.getTime() - cDate.getTime()) / 1000;
 
     const res = {
-      days: Math.floor((diffTime / (3600 * 24)) % 31),
-      hours: Math.floor((diffTime / 3600) % 24),
-      minutes: Math.floor((diffTime / 60) % 60),
+      days: Math.floor(Math.div(diffTime, 3600 * 24) % 31),
+      hours: Math.floor(Math.div(diffTime, 3600) % 24),
+      minutes: Math.floor(Math.div(diffTime, 60) % 60),
       seconds: diffTime % 60
     };
+
     return res;
   } catch (err) {
     const errors = err.response.data.errors;
